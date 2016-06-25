@@ -67,14 +67,31 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\SOIL2\include;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\GLEW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Dependencies\GLFW\lib;$(SolutionDir)\Dependencies\SOIL2\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)\Dependencies\assimp\lib;$(SolutionDir)\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Temp\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(Configuration)\temp\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\SOIL2\include;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\GLEW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Dependencies\GLFW\lib;$(SolutionDir)\Dependencies\SOIL2\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)\Dependencies\assimp\lib;$(SolutionDir)\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Game\</OutDir>
+    <IntDir>$(SolutionDir)Game\temp</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;FreeImage.lib;assimp-vc130-mt.lib;SOIL2.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -90,10 +107,19 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>winmm.lib;FreeImage.lib;assimp-vc130-mt.lib;SOIL2.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -110,6 +136,68 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\app\client.cpp" />
+    <ClCompile Include="src\app\inputmanager.cpp" />
+    <ClCompile Include="src\app\window.cpp" />
+    <ClCompile Include="src\app\xten_glfw.cpp" />
+    <ClCompile Include="src\graphics\API\context.cpp" />
+    <ClCompile Include="src\graphics\API\GLcontext.cpp" />
+    <ClCompile Include="src\graphics\camera\camera.cpp" />
+    <ClCompile Include="src\graphics\lightingtechnique.cpp" />
+    <ClCompile Include="src\graphics\mesh.cpp" />
+    <ClCompile Include="src\graphics\shaders\shader.cpp" />
+    <ClCompile Include="src\graphics\shaders\shadermanager.cpp" />
+    <ClCompile Include="src\graphics\texture2d.cpp" />
+    <ClCompile Include="src\graphics\texturemanager.cpp" />
+    <ClCompile Include="src\maths\pipeline.cpp" />
+    <ClCompile Include="src\maths\primesearch.cpp" />
+    <ClCompile Include="src\maths\xrandom.cpp" />
+    <ClCompile Include="src\system\memorymanager.cpp" />
+    <ClCompile Include="src\system\memorypool.cpp" />
+    <ClCompile Include="src\utils\cpuspeed.cpp" />
+    <ClCompile Include="src\utils\string.cpp" />
+    <ClCompile Include="src\xTenStd.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\app\client.h" />
+    <ClInclude Include="src\app\inputmanager.h" />
+    <ClInclude Include="src\app\window.h" />
+    <ClInclude Include="src\app\xten_glfw.h" />
+    <ClInclude Include="src\graphics\API\context.h" />
+    <ClInclude Include="src\graphics\API\GLcontext.h" />
+    <ClInclude Include="src\graphics\camera\camera.h" />
+    <ClInclude Include="src\graphics\lightingtechnique.h" />
+    <ClInclude Include="src\graphics\lights.h" />
+    <ClInclude Include="src\graphics\mesh.h" />
+    <ClInclude Include="src\graphics\shaders\shader.h" />
+    <ClInclude Include="src\graphics\shaders\shadermanager.h" />
+    <ClInclude Include="src\graphics\texture2d.h" />
+    <ClInclude Include="src\graphics\texturemanager.h" />
+    <ClInclude Include="src\graphics\vertex.h" />
+    <ClInclude Include="src\maths\pipeline.h" />
+    <ClInclude Include="src\maths\primesearch.h" />
+    <ClInclude Include="src\maths\xrandom.h" />
+    <ClInclude Include="src\maths\xmat.h" />
+    <ClInclude Include="src\maths\xmaths.h" />
+    <ClInclude Include="src\maths\xvec.h" />
+    <ClInclude Include="src\system\memorymanager.h" />
+    <ClInclude Include="src\system\memorypool.h" />
+    <ClInclude Include="src\utils\cpuspeed.h" />
+    <ClInclude Include="src\utils\string.h" />
+    <ClInclude Include="src\utils\utils.h" />
+    <ClInclude Include="src\utils\xtenkeys.h" />
+    <ClInclude Include="src\xten.h" />
+    <ClInclude Include="src\xTenStd.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\basic.frag" />
+    <None Include="shaders\basic.vert" />
+    <None Include="shaders\light.frag" />
+    <None Include="shaders\light.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
