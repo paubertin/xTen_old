@@ -12,39 +12,39 @@ namespace xten { namespace xgraphics {
 
 	Mesh::MeshEntry::~MeshEntry()
 	{
-		glDeleteBuffers(1, &m_VBO);
-		glDeleteBuffers(1, &m_IBO);
+		GLCall( glDeleteBuffers(1, &m_VBO) );
+		GLCall( glDeleteBuffers(1, &m_IBO) );
 	}
 
 	void Mesh::MeshEntry::init(const std::vector<Vertex>& vertices, const std::vector<GLuint>& indices)
 	{
 		numIndices = indices.size();
 
-		glGenVertexArrays(1, &m_VAO);
-		glGenBuffers(1, &m_VBO);
-		glGenBuffers(1, &m_IBO);
+		GLCall( glGenVertexArrays(1, &m_VAO) );
+		GLCall( glGenBuffers(1, &m_VBO) );
+		GLCall( glGenBuffers(1, &m_IBO) );
 
-		glBindVertexArray(m_VAO);
+		GLCall( glBindVertexArray(m_VAO) );
 
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+		GLCall( glBindBuffer(GL_ARRAY_BUFFER, m_VBO) );
+		GLCall( glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW) );
 
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * numIndices, &indices[0], GL_STATIC_DRAW);
+		GLCall( glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBO) );
+		GLCall( glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * numIndices, &indices[0], GL_STATIC_DRAW) );
 
 		//positions
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(0));
+		GLCall( glEnableVertexAttribArray(0) );
+		GLCall( glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(0)) );
 		//texcoord
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(offsetof(Vertex, Vertex::uv)));
+		GLCall( glEnableVertexAttribArray(1) );
+		GLCall( glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(offsetof(Vertex, Vertex::uv))) );
 		//normal
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(offsetof(Vertex, Vertex::normal)));
+		GLCall( glEnableVertexAttribArray(2) );
+		GLCall( glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)(offsetof(Vertex, Vertex::normal))) );
 		
 		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		//glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
+		GLCall( glBindVertexArray(0) );
 	}
 
 	Mesh::Mesh()
@@ -78,9 +78,8 @@ namespace xten { namespace xgraphics {
 
 		if (!scene || scene->mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
-			std::cout << "ERROR [ASSIMP]. Could not load file:" << filename.c_str() << std::endl
-				<< import.GetErrorString() << std::endl
-				<< "-- --------------------------------- --" << std::endl;
+			std::string err = "[ASSIMP]. Could not load file: " + filename + "\n" + import.GetErrorString();
+			XTEN_ERROR(err);
 			return res;
 		}
 		else
@@ -102,9 +101,9 @@ namespace xten { namespace xgraphics {
 				m_Textures[MaterialIndex]->bind(GL_TEXTURE0);
 			}
 
-			glBindVertexArray(m_Entries[i].m_VAO);
-			glDrawElements(GL_TRIANGLES, m_Entries[i].numIndices, GL_UNSIGNED_INT, NULL);
-			glBindVertexArray(0);
+			GLCall( glBindVertexArray(m_Entries[i].m_VAO) );
+			GLCall( glDrawElements(GL_TRIANGLES, m_Entries[i].numIndices, GL_UNSIGNED_INT, NULL) );
+			GLCall( glBindVertexArray(0) );
 
 		}
 	}
@@ -144,7 +143,7 @@ namespace xten { namespace xgraphics {
 		for (GLuint i = 0; i < aimesh->mNumFaces; i++)
 		{
 			const aiFace& face = aimesh->mFaces[i];
-			assert(face.mNumIndices == 3);
+			XASSERT(face.mNumIndices == 3);
 			indices.push_back(face.mIndices[0]);
 			indices.push_back(face.mIndices[1]);
 			indices.push_back(face.mIndices[2]);

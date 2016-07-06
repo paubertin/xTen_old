@@ -1,11 +1,17 @@
 #include "client.h"
 #include "../system/memorymanager.h"
 #include "../utils/cpuspeed.h"
-#include "xten_glfw.h"
+#include "../graphics/API/xten_glfw.h"
 #include "../graphics/shaders/shadermanager.h"
 #include "../graphics/texturemanager.h"
+//#include "../graphics/fonts/fontmanager.h"
+//#include "../graphics/fonts/fontrenderer.h"
 
 namespace xten {
+
+	using namespace xgraphics;
+	using namespace API;
+	//using namespace xfont;
 
 	Client* Client::s_Instance = nullptr;
 
@@ -17,15 +23,17 @@ namespace xten {
 
 	Client::~Client()
 	{
-		xgraphics::ShaderManager::clean();
-		xgraphics::TexManager::clean();
-		std::cout << "destroying client" << std::endl;
+		ShaderManager::clean();
+		TexManager::clean();
+		//FontManager::clean();
+		XTEN_INFO("Destroying client...");
 		shutdown();
 	}
 
-	bool Client::init(XTEN_FW_TYPE type)
+	bool Client::init(XTEN_GL_PROFILE gltype, XTEN_GL_FW_TYPE type)
 	{
-		std::cout << "Initializing xTen..." << std::endl;
+		//std::cout << "Initializing xTen..." << std::endl;
+		XTEN_INFO("Initializing xTen...");
 
 		MemoryManager::init();
 		MemoryManager::get()->getMemInfo().print();
@@ -33,7 +41,7 @@ namespace xten {
 		unsigned long cpuspeed = ReadCPUSpeed();
 		std::cout << "CPU speed : " << cpuspeed << " MHz" << std::endl;
 
-
+		m_GLProfile = gltype;
 		m_FwType = type;
 		bool res = false;
 
@@ -58,7 +66,7 @@ namespace xten {
 		switch (m_FwType)
 		{
 		case XTEN_FW_TYPE_GLFW:
-			res = GLFWCreateWindow(m_Window);
+			res = GLFWCreateWindow(m_Window, m_GLProfile);
 			break;
 		default:
 			res = false;
@@ -67,24 +75,35 @@ namespace xten {
 		return res;
 	}
 
-	void Client::start()
+	bool Client::start()
 	{
+		if (!m_ATB.init(m_GLProfile))
+		{
+			XTEN_ERROR("[AntTweakBar]. Failed to initialize ATB.");
+			return false;
+		}
+
 		m_Input = XNEW InputManager();
 		setCallbacks();
 
 		m_Pipeline = XNEW xmaths::Pipeline();
-		m_Camera = XNEW xgraphics::Camera();
+		m_Camera = XNEW Camera();
 		m_Running = true;
 
-		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
+		GLCall( glClearColor(0.05f, 0.05f, 0.05f, 1.0f) );
 		//glFrontFace(GL_CW);
 		//glCullFace(GL_BACK);
-		glEnable(GL_CULL_FACE);
-		glEnable(GL_DEPTH_TEST);
+		GLCall( glEnable(GL_CULL_FACE) );
+		GLCall( glEnable(GL_DEPTH_TEST) );
+
+		//FontManager::init("fonts");
+
+		return true;
 	}
 
 	void Client::setCallbacks()
 	{
+		XTEN_INFO("Setting callbacks...");
 		switch (m_FwType)
 		{
 		case XTEN_FW_TYPE_GLFW:

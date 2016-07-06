@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xTen", "xTen\xTen.vcxproj", "{E9F49C3B-E733-4C0A-91F3-721DBC6682D1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xEncoder", "xEncoder\xEncoder.vcxproj", "{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{E9F49C3B-E733-4C0A-91F3-721DBC6682D1}.Release|x64.Build.0 = Release|x64
 		{E9F49C3B-E733-4C0A-91F3-721DBC6682D1}.Release|x86.ActiveCfg = Release|Win32
 		{E9F49C3B-E733-4C0A-91F3-721DBC6682D1}.Release|x86.Build.0 = Release|Win32
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Debug|x64.ActiveCfg = Debug|x64
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Debug|x64.Build.0 = Debug|x64
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Debug|x86.ActiveCfg = Debug|Win32
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Debug|x86.Build.0 = Debug|Win32
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Release|x64.ActiveCfg = Release|x64
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Release|x64.Build.0 = Release|x64
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Release|x86.ActiveCfg = Release|Win32
+		{2CD2DF40-778B-44C4-9B10-0C19D02BF91F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

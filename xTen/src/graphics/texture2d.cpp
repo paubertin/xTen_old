@@ -1,4 +1,5 @@
 #include "texture2d.h"
+#include "../xTenStd.h"
 
 namespace xten { namespace xgraphics {
 
@@ -8,23 +9,23 @@ namespace xten { namespace xgraphics {
 		m_Image_Format(GL_RGB), m_Internal_Format(GL_RGB),
 		m_TextureTarget(textureTarget)
 	{
-		glGenTextures(1, &m_TID);
+		GLCall( glGenTextures(1, &m_TID) );
 	}
 
 	Texture2D::~Texture2D()
 	{
-		glDeleteTextures(1, &m_TID);
+		GLCall( glDeleteTextures(1, &m_TID) );
 	}
 
 	void Texture2D::bind(GLenum TextureUnit) const
 	{
-		glActiveTexture(TextureUnit);
-		glBindTexture(m_TextureTarget, m_TID);
+		GLCall( glActiveTexture(TextureUnit) );
+		GLCall( glBindTexture(m_TextureTarget, m_TID) );
 	}
 
 	void Texture2D::unbind() const
 	{
-		glBindTexture(m_TextureTarget, 0);
+		GLCall( glBindTexture(m_TextureTarget, 0) );
 	}
 
 	void Texture2D::generate(GLint width, GLint height, GLuint bits, unsigned char* image)
@@ -40,15 +41,15 @@ namespace xten { namespace xgraphics {
 		m_Internal_Format = bits == 32 ? GL_RGBA : GL_RGB;
 		m_Image_Format = bits == 32 ? GL_BGRA : GL_BGR;
 
-		glBindTexture(m_TextureTarget, m_TID);
-		glTexImage2D(m_TextureTarget, 0, m_Internal_Format, width, height, 0, m_Image_Format, GL_UNSIGNED_BYTE, image);
+		GLCall( glBindTexture(m_TextureTarget, m_TID) );
+		GLCall( glTexImage2D(m_TextureTarget, 0, m_Internal_Format, width, height, 0, m_Image_Format, GL_UNSIGNED_BYTE, image) );
 		// Set the texture parameters
-		glTexParameteri(m_TextureTarget, GL_TEXTURE_WRAP_S, m_WrapS);
-		glTexParameteri(m_TextureTarget, GL_TEXTURE_WRAP_T, m_WrapT);
-		glTexParameteri(m_TextureTarget, GL_TEXTURE_MIN_FILTER, m_FilterMin);
-		glTexParameteri(m_TextureTarget, GL_TEXTURE_MAG_FILTER, m_FilterMax);
-		glGenerateMipmap(m_TextureTarget);
-		glBindTexture(m_TextureTarget, 0);
+		GLCall( glTexParameteri(m_TextureTarget, GL_TEXTURE_WRAP_S, m_WrapS) );
+		GLCall( glTexParameteri(m_TextureTarget, GL_TEXTURE_WRAP_T, m_WrapT) );
+		GLCall( glTexParameteri(m_TextureTarget, GL_TEXTURE_MIN_FILTER, m_FilterMin) );
+		GLCall( glTexParameteri(m_TextureTarget, GL_TEXTURE_MAG_FILTER, m_FilterMax) );
+		GLCall( glGenerateMipmap(m_TextureTarget) );
+		GLCall( glBindTexture(m_TextureTarget, 0) );
 	}
 
 } }

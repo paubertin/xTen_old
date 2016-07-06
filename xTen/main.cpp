@@ -3,6 +3,8 @@
 using namespace xten;
 using namespace xgraphics;
 using namespace xmaths;
+//using namespace xfont;
+using namespace API;
 
 class Game : public Client
 {
@@ -22,12 +24,17 @@ public:
 	{
 		XDEL(m_Lightning);
 		XDEL(m_Mesh);
-		std::cout << "destroying game" << std::endl;
+		//std::cout << "destroying game" << std::endl;
 	}
 
-	void start() override
+	bool start() override
 	{
-		Client::start();
+		bool res = Client::start();
+
+		//FontManager::add("arial48", "arial/arial.ttf", 48);
+		//FontManager::add("cnr32", "cnr.otf", 32);
+
+		//SetCursor(NULL);
 
 		m_DirLight.m_AmbientIntensity = 0.05f;
 		m_DirLight.m_DiffuseIntensity = 0.85f;
@@ -66,6 +73,7 @@ public:
 		m_Mesh->loadMesh("models/phoenix_ugv.md2");
 		//m_Mesh->loadMesh("models/nanosuit/nanosuit.obj");
 
+		return res;
 	}
 
 	void onUpdate() override
@@ -84,6 +92,13 @@ public:
 				m_Camera->setActive(true);
 			}
 		}
+		//for (GLuint key = 0; key < MAX_KEYS; key++)
+		//{
+		//	if (Input::isKeyPressed(key))
+		//	{
+		//		std::cout << " Key # " << key << " pressed." << std::endl;
+		//	}
+		//}
 
 	}
 
@@ -116,32 +131,46 @@ public:
 
 		m_Mesh->render();
 
+		//FontRenderer::renderText("cnr32", "xTen test", 100.f, 100.f, 3.0f, vec4(1.0f,1.0f,1.0f,1.0f));
+
+		//FontManager::renderText("arial48", "BONJOUR", 100, 100, 1.0f, g_Red);
+
 	}
 
 };
 
 int main(int argc, char** argv)
 {
+	Logger::Init("Logging.xml");
+
 	Client * game = XNEW Game;
 
-	if (!game->init(XTEN_FW_TYPE_GLFW))
+	if (!game->init(XTEN_GL_CORE_PROFILE, XTEN_FW_TYPE_GLFW))
 	{
-		std::cout << "Failed to init application" << std::endl;
+		XTEN_ERROR("Failed to init application");
 		system("PAUSE");
 		return 1;
 	}
 
 	if (!game->createWindow("xTen Game !", {1200,675,false,false}))
 	{
-		std::cout << "Failed to create window" << std::endl;
+		XTEN_ERROR("Failed to create window");
 		system("PAUSE");
 		return 1;
 	}
 
-	game->start();
+	if (!game->start())
+	{
+		XTEN_ERROR("Failed to start application");
+		system("PAUSE");
+		return 1;
+	};
+
 	game->run();
 
 	XDEL(game);
+
+	Logger::Destroy();
 
 	system("PAUSE");
 

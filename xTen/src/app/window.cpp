@@ -1,6 +1,7 @@
 #include "window.h"
 #include "../graphics/API/context.h"
 #include "inputmanager.h"
+#include "../xTenStd.h"
 
 namespace xten {
 
@@ -15,21 +16,16 @@ namespace xten {
 
 	void Window::clear()
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		GLCall( glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) );
 	}
 
 	void Window::onUpdate(GLint *w, GLint *h)
 	{
-		glfwGetFramebufferSize(m_Window, &(m_Properties.width), &(m_Properties.height));
+		GLCall( glfwGetFramebufferSize(m_Window, &(m_Properties.width), &(m_Properties.height)) );
 		*w = m_Properties.width;
 		*h = m_Properties.height;
 
-
-		glfwSwapBuffers(m_Window);
-
-		GLenum error = glGetError();
-		if (error != GL_NO_ERROR)
-			std::cout << "OpenGL error: " << error << std::endl;
+		GLCall( glfwSwapBuffers(m_Window) );
 	}
 
 }

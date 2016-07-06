@@ -1,24 +1,21 @@
 #pragma once
 
+#include "../graphics/API/context.h"
 #include "inputmanager.h"
 #include "window.h"
 #include "../utils/utils.h"
+#include "../graphics/API/atb.h"
 
 namespace xten {
-
-	enum XTEN_FW_TYPE {
-		XTEN_FW_TYPE_GLUT,
-		XTEN_FW_TYPE_GLFW
-	};
 
 	class Client
 	{
 	public:
 		Client();
 		virtual ~Client();
-		bool init(XTEN_FW_TYPE type = XTEN_FW_TYPE_GLFW);
+		bool init(xgraphics::API::XTEN_GL_PROFILE gltype = xgraphics::API::XTEN_GL_ANY_PROFILE, xgraphics::API::XTEN_GL_FW_TYPE type = xgraphics::API::XTEN_FW_TYPE_GLFW);
 		bool createWindow(const std::string& name, const WindowProperties& properties);
-		virtual void start();
+		virtual bool start();
 		void run();
 		void close() { m_Running = false; }
 		virtual void onUpdate();
@@ -36,7 +33,9 @@ namespace xten {
 		Window * m_Window;
 		xgraphics::Camera* m_Camera;
 		xmaths::Pipeline* m_Pipeline;
-		XTEN_FW_TYPE m_FwType;
+		xgraphics::API::XTEN_GL_FW_TYPE m_FwType;
+		xgraphics::API::XTEN_GL_PROFILE m_GLProfile;
+		xgraphics::API::ATB m_ATB;
 	};
 
 }

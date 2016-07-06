@@ -191,6 +191,7 @@ namespace xten {
 		typedef xVec<float, 2> vec2;
 		typedef xVec<double, 2> xVec2d;
 		typedef xVec<int, 2> xVec2i;
+		typedef xVec<int, 2> vec2i;
 
 		//Specialization n=3
 		template <typename T>
@@ -222,6 +223,7 @@ namespace xten {
 		typedef xVec<float, 3> vec3;
 		typedef xVec<double, 3> xVec3d;
 		typedef xVec<int, 3> xVec3i;
+		typedef xVec<int, 3> vec3i;
 
 		//Specialization n=4
 		template <typename T>
@@ -242,6 +244,7 @@ namespace xten {
 		typedef xVec<float, 4> vec4;
 		typedef xVec<double, 4> xVec4d;
 		typedef xVec<int, 4> xVec4i;
+		typedef xVec<int, 4> vec4i;
 
 #pragma warning(pop)
 #undef BASIC_VEC

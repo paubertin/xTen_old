@@ -23,32 +23,32 @@ namespace xten { namespace xgraphics {
 	bool Camera::onKeyboard()
 	{
 		bool res = false;
-		if (Input::isKeyPressed(GLFW_KEY_W))
+		if (Input::isKeyPressed(XTEN_KEY_Z))
 		{
 			m_Position += m_Speed * m_Front;
 			res = true;
 		}
-		if (Input::isKeyPressed(GLFW_KEY_S))
+		if (Input::isKeyPressed(XTEN_KEY_S))
 		{
 			m_Position -= m_Speed * m_Front;
 			res = true;
 		}
-		if (Input::isKeyPressed(GLFW_KEY_A))
+		if (Input::isKeyPressed(XTEN_KEY_Q))
 		{
 			m_Position -= m_Speed * normalize(cross(m_Front, m_Up));
 			res = true;
 		}
-		if (Input::isKeyPressed(GLFW_KEY_D))
+		if (Input::isKeyPressed(XTEN_KEY_D))
 		{
 			m_Position += m_Speed * normalize(cross(m_Front, m_Up));
 			res = true;
 		}
-		if (Input::isKeyPressed(GLFW_KEY_LEFT_CONTROL))
+		if (Input::isKeyPressed(XTEN_KEY_LEFT_CONTROL))
 		{
 			m_Position.y -= 0.5*m_Speed;
 			res = true;
 		}
-		if (Input::isKeyPressed(GLFW_KEY_LEFT_SHIFT))
+		if (Input::isKeyPressed(XTEN_KEY_LEFT_SHIFT))
 		{
 			m_Position.y += 0.5*m_Speed;
 			res = true;

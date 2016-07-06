@@ -13,8 +13,8 @@ namespace xten {
 			{
 				if (shader->getName() == name)
 				{
-					std::cout << "ERROR [ShaderManager]. Shader " << name << " already exists." << std::endl
-						<< "-- --------------------------------- --" << std::endl;
+					std::string err = "[ShaderManager]. Shader " + name + " already exists.";
+					XTEN_WARN(err);
 					return nullptr;
 				}
 			}
@@ -27,8 +27,8 @@ namespace xten {
 			}
 			catch (std::exception e)
 			{
-				std::cout << "ERROR [ShaderManager]. Failed to read vertex shader file: " << vertexpath << std::endl
-					<< "-- --------------------------------- --" << std::endl;
+				std::string err = "[ShaderManager]. Failed to read vertex shader file: " + std::string(vertexpath);
+				XTEN_ERROR(err);
 			}
 			try
 			{
@@ -36,8 +36,8 @@ namespace xten {
 			}
 			catch (std::exception e)
 			{
-				std::cout << "ERROR [ShaderManager]. Failed to read fragment shader file: " << fragpath << std::endl
-					<< "-- --------------------------------- --" << std::endl;
+				std::string err = "[ShaderManager]. Failed to read fragment shader file: " + std::string(fragpath);
+				XTEN_ERROR(err);
 			}
 			if (geompath != nullptr)
 			{
@@ -47,8 +47,8 @@ namespace xten {
 				}
 				catch (std::exception e)
 				{
-					std::cout << "ERROR [ShaderManager]. Failed to read geometry shader file: " << geompath << std::endl
-						<< "-- --------------------------------- --" << std::endl;
+					std::string err = "[ShaderManager]. Failed to read geometry shader file: " + std::string(geompath);
+					XTEN_ERROR(err);
 				}
 			}
 			const GLchar *vShader = vertsrc.c_str();
@@ -59,16 +59,15 @@ namespace xten {
 			Shader* shader = XNEW Shader(name);
 			if (!(shader->compile(vShader, fShader, geompath != nullptr ? gShader : nullptr)))
 			{
-				std::cout << "ERROR [ShaderManager]. Failed creating shader object. " << std::endl
-					<< "-- --------------------------------- --" << std::endl;
+				XTEN_ERROR("[ShaderManager]. Failed creating shader object.");
 				XDEL(shader);
 				return nullptr;
 			}
 			else
 			{
 				m_Shaders.push_back(shader);
-				std::cout << "[ShaderManager]. Created shader object: " << name << std::endl
-					<< "-- --------------------------------- --" << std::endl;
+				std::string info = "[ShaderManager]. Created shader object: " + name;
+				XTEN_INFO(info);
 				return shader;
 			}
 		}
@@ -87,10 +86,7 @@ namespace xten {
 
 		void ShaderManager::clean()
 		{
-			for (GLuint i = 0; i < m_Shaders.size(); i++)
-			{
-				XDEL(m_Shaders[i]);
-			}
+			XDEL_VEC(m_Shaders);
 		}
 
 

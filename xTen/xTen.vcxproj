@@ -68,14 +68,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\SOIL2\include;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\GLEW\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\GLFW\lib;$(SolutionDir)\Dependencies\SOIL2\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)\Dependencies\assimp\lib;$(SolutionDir)\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\AntTweakBar\include;$(SolutionDir)Dependencies\SOIL2\include;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(ProjectDir)ext\tinyxml;$(SolutionDir)Dependencies\GLEW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Dependencies\GLFW\lib;$(SolutionDir)\Dependencies\SOIL2\lib;$(SolutionDir)Dependencies\AntTweakBar\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)\Dependencies\assimp\lib;$(SolutionDir)\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Temp\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Temp\$(Configuration)\temp\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\SOIL2\include;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(SolutionDir)Dependencies\GLEW\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\GLFW\lib;$(SolutionDir)\Dependencies\SOIL2\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)\Dependencies\assimp\lib;$(SolutionDir)\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\AntTweakBar\include;$(SolutionDir)Dependencies\SOIL2\include;$(SolutionDir)Dependencies\assimp\include;$(SolutionDir)Dependencies\FreeImage\include;$(ProjectDir)ext\tinyxml;$(SolutionDir)Dependencies\GLEW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Dependencies\GLFW\lib;$(SolutionDir)\Dependencies\SOIL2\lib;$(SolutionDir)Dependencies\AntTweakBar\lib;$(SolutionDir)Dependencies\FreeImage\lib;$(SolutionDir)\Dependencies\assimp\lib;$(SolutionDir)\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Game\</OutDir>
     <IntDir>$(SolutionDir)Game\temp</IntDir>
   </PropertyGroup>
@@ -84,10 +84,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;FT2_BUILD_LIBRARY;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>winmm.lib;FreeImage.lib;assimp-vc130-mt.lib;SOIL2.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AntTweakBar.lib;winmm.lib;FreeImage.lib;assimp-vc130-mt.lib;SOIL2.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;NDEBUG;FT2_BUILD_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <FloatingPointModel>Fast</FloatingPointModel>
@@ -116,7 +116,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>winmm.lib;FreeImage.lib;assimp-vc130-mt.lib;SOIL2.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AntTweakBar.lib;winmm.lib;FreeImage.lib;assimp-vc130-mt.lib;SOIL2.lib;glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
@@ -140,7 +140,12 @@
     <ClCompile Include="src\app\client.cpp" />
     <ClCompile Include="src\app\inputmanager.cpp" />
     <ClCompile Include="src\app\window.cpp" />
-    <ClCompile Include="src\app\xten_glfw.cpp" />
+    <ClCompile Include="src\ext\tinyxml\tinystr.cpp" />
+    <ClCompile Include="src\ext\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="src\ext\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="src\ext\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="src\graphics\API\xten_glfw.cpp" />
+    <ClCompile Include="src\graphics\API\atb.cpp" />
     <ClCompile Include="src\graphics\API\context.cpp" />
     <ClCompile Include="src\graphics\API\GLcontext.cpp" />
     <ClCompile Include="src\graphics\camera\camera.cpp" />
@@ -153,9 +158,11 @@
     <ClCompile Include="src\maths\pipeline.cpp" />
     <ClCompile Include="src\maths\primesearch.cpp" />
     <ClCompile Include="src\maths\xrandom.cpp" />
+    <ClCompile Include="src\system\logger.cpp" />
     <ClCompile Include="src\system\memorymanager.cpp" />
     <ClCompile Include="src\system\memorypool.cpp" />
     <ClCompile Include="src\utils\cpuspeed.cpp" />
+    <ClCompile Include="src\utils\filestream.cpp" />
     <ClCompile Include="src\utils\string.cpp" />
     <ClCompile Include="src\xTenStd.cpp" />
   </ItemGroup>
@@ -163,9 +170,13 @@
     <ClInclude Include="src\app\client.h" />
     <ClInclude Include="src\app\inputmanager.h" />
     <ClInclude Include="src\app\window.h" />
-    <ClInclude Include="src\app\xten_glfw.h" />
+    <ClInclude Include="src\ext\tinyxml\tinystr.h" />
+    <ClInclude Include="src\ext\tinyxml\tinyxml.h" />
+    <ClInclude Include="src\graphics\API\xten_glfw.h" />
+    <ClInclude Include="src\graphics\API\atb.h" />
     <ClInclude Include="src\graphics\API\context.h" />
     <ClInclude Include="src\graphics\API\GLcontext.h" />
+    <ClInclude Include="src\graphics\bufferobject.h" />
     <ClInclude Include="src\graphics\camera\camera.h" />
     <ClInclude Include="src\graphics\lightingtechnique.h" />
     <ClInclude Include="src\graphics\lights.h" />
@@ -181,9 +192,13 @@
     <ClInclude Include="src\maths\xmat.h" />
     <ClInclude Include="src\maths\xmaths.h" />
     <ClInclude Include="src\maths\xvec.h" />
+    <ClInclude Include="src\system\criticalsection.h" />
+    <ClInclude Include="src\system\logger.h" />
     <ClInclude Include="src\system\memorymanager.h" />
     <ClInclude Include="src\system\memorypool.h" />
     <ClInclude Include="src\utils\cpuspeed.h" />
+    <ClInclude Include="src\utils\filestream.h" />
+    <ClInclude Include="src\utils\streamfactory.h" />
     <ClInclude Include="src\utils\string.h" />
     <ClInclude Include="src\utils\utils.h" />
     <ClInclude Include="src\utils\xtenkeys.h" />
@@ -193,6 +208,8 @@
   <ItemGroup>
     <None Include="shaders\basic.frag" />
     <None Include="shaders\basic.vert" />
+    <None Include="shaders\font.frag" />
+    <None Include="shaders\font.vert" />
     <None Include="shaders\light.frag" />
     <None Include="shaders\light.vert" />
   </ItemGroup>

@@ -1,11 +1,16 @@
 #pragma once
 
 #include "xTenStd.h"
+#include <AntTweakBar.h>
 
 #include "app\client.h"
 #include "app\inputmanager.h"
 #include "app\window.h"
-#include "app\xten_glfw.h"
+
+#include "graphics\API\atb.h"
+#include "graphics\API\context.h"
+#include "graphics\API\GLcontext.h"
+#include "graphics\API\xten_glfw.h"
 
 #include "graphics\camera\camera.h"
 
@@ -21,6 +26,9 @@
 #include "graphics\mesh.h"
 #include "graphics\vertex.h"
 
+//#include "graphics\fonts\font.h"
+//#include "graphics\fonts\fontmanager.h"
+
 #include "system\memorymanager.h"
 #include "system\memorypool.h"
 
@@ -29,3 +37,4 @@
 #include "utils\utils.h"
 #include "utils\string.h"
 #include "utils\cpuspeed.h"
+#include "utils\xtenkeys.h"

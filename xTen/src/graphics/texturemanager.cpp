@@ -14,8 +14,8 @@ namespace xten { namespace xgraphics {
 		{
 			if (texture->getName() == name)
 			{
-				std::cout << "ERROR [TexManager]. Texture " << name << " already exists." << std::endl
-					<< "-- --------------------------------- --" << std::endl;
+				std::string err = "[TexManager]. Texture " + name + " already exists.";
+				XTEN_WARN(err);
 				return nullptr;
 			}
 		}
@@ -38,9 +38,8 @@ namespace xten { namespace xgraphics {
 		//texture->m_TID = SOIL_load_OGL_texture(filename.c_str(), SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
 		if (!image)
 		{
-			std::cout << "ERROR [TexManager]. SOIL loading image error:" << filename << std::endl
-				<< SOIL_last_result() << std::endl
-				<< "-- --------------------------------- --" << std::endl;
+			std::string err = "[TexManager]. SOIL loading image error: " + filename + SOIL_last_result();
+			XTEN_ERROR(err);
 			XDEL(texture);
 			return nullptr;
 		}
@@ -49,7 +48,8 @@ namespace xten { namespace xgraphics {
 
 		m_Textures.push_back(texture);
 
-		std::cout << "[TexManager]. Added new texture: " << name << " (" << filename << ")" << std::endl;
+		std::string info = "[TexManager]. Added new texture:" + name + " (" + filename + ")";
+		XTEN_INFO(info);
 
 		XDEL_ARRAY(image);
 
@@ -70,10 +70,7 @@ namespace xten { namespace xgraphics {
 
 	void TexManager::clean()
 	{
-		for (GLuint i = 0; i < m_Textures.size(); i++)
-		{
-			XDEL(m_Textures[i]);
-		}
+		XDEL_VEC(m_Textures);
 	}
 
 } }

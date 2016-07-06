@@ -4,6 +4,7 @@
 #include <GLFW\glfw3.h>
 
 #include "../maths/xmaths.h"
+#include "../utils/xtenkeys.h"
 
 
 #define MAX_KEYS		1024
@@ -25,18 +26,16 @@ namespace xten {
 		GLboolean m_MouseState[MAX_BUTTONS];
 		GLboolean m_MouseClicked[MAX_BUTTONS];
 
-		GLdouble m_MouseWheelXoffset;
-		GLdouble m_MouseWheelYoffset;
+		GLfloat m_MouseWheelXoffset;
+		GLfloat m_MouseWheelYoffset;
 
 		xmaths::vec2 m_MousePosition;
 		xmaths::vec2 m_MouseLastPosition;
-		friend void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods);
-		friend void mouse_button_callback(GLFWwindow * window, int button, int action, int mods);
-		friend void cursor_position_callback(GLFWwindow * window, double xpos, double ypos);
-		friend void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
 	public:
 		void onUpdate();
+
+		inline void setKey(GLuint keycode, GLboolean state) { m_Keys[keycode] = state; }
 
 		GLboolean getKey(GLuint keycode) const
 		{
@@ -61,6 +60,11 @@ namespace xten {
 				return false;
 			}
 			return m_KeyTyped[keycode];
+		}
+
+		inline void setMouseButton(GLuint button, GLboolean state)
+		{
+			m_MouseButtons[button] = state;
 		}
 
 		GLboolean getMouseButton(GLuint button) const
@@ -88,15 +92,32 @@ namespace xten {
 			return m_MouseClicked[button];
 		}
 
-		GLdouble getMouseWheelXoffset() const { return m_MouseWheelXoffset; }
-		GLdouble getMouseWheelYoffset() const { return m_MouseWheelYoffset; }
+		inline void incrementMouseWheelXoffset(GLfloat xoffset)
+		{
+			m_MouseWheelXoffset += xoffset;
+		}
+
+		inline void incrementMouseWheelYoffset(GLfloat yoffset)
+		{
+			m_MouseWheelYoffset += yoffset;
+		}
+
+		GLfloat getMouseWheelXoffset() const { return m_MouseWheelXoffset; }
+		GLfloat getMouseWheelYoffset() const { return m_MouseWheelYoffset; }
+
+		inline void setCursorPosition(GLfloat xpos, GLfloat ypos)
+		{
+			m_MousePosition.x = xpos;
+			m_MousePosition.y = ypos;
+		}
 
 		const xmaths::vec2& getMousePosition() const { return m_MousePosition; }
 		const xmaths::vec2& getMouseLastPosition() const { return m_MouseLastPosition; }
 
-		void resetMousePosition();
-		void resetWheelY() { m_MouseWheelYoffset = 0.; };
-		void setCallbacks(GLFWwindow *window);
+		inline void resetMousePosition() { m_MouseLastPosition = m_MousePosition; }
+		inline void resetWheelY() { m_MouseWheelYoffset = 0.f; };
+		inline void resetWheelX() { m_MouseWheelXoffset = 0.f; };
+
 	};
 
 	class Input

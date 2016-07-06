@@ -13,161 +13,263 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\utils">
+      <UniqueIdentifier>{93219bc5-32e3-4350-b7a3-6f3e8ce5b8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics">
+      <UniqueIdentifier>{3d984786-4363-4d26-be9f-1ea48d549753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\maths">
+      <UniqueIdentifier>{0e031382-acfb-43e4-bf84-357d6689703e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\maths">
+      <UniqueIdentifier>{2ef52b98-489b-4549-bada-2ac55392a00c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\app">
+      <UniqueIdentifier>{4fbe3ee3-7c72-46ae-b538-b0b52cb26b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\app">
+      <UniqueIdentifier>{b8a0442a-7a8d-48db-88ba-293dbab4f749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\API">
+      <UniqueIdentifier>{f2a1088b-8ef1-47fb-a570-3af91afa7672}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\camera">
+      <UniqueIdentifier>{d0888960-8f19-45bc-a6a4-0a2398d0c691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\fonts">
+      <UniqueIdentifier>{9d6f3607-6478-42ca-a086-6e1bac20b480}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\shaders">
+      <UniqueIdentifier>{80788087-81c6-498d-a67d-207e736a5d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics">
+      <UniqueIdentifier>{2d058884-53ba-4d94-8e37-d2747c4815f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\API">
+      <UniqueIdentifier>{3b58940f-3d6b-4eae-8d61-4cb27938398b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\camera">
+      <UniqueIdentifier>{17e13b33-fb4f-4b1b-bc98-cdf7c651c26b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\fonts">
+      <UniqueIdentifier>{8493d14e-bbf5-474a-8841-8b8a23143b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\shaders">
+      <UniqueIdentifier>{a534c659-4c9b-4701-821b-9d515ec756bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\system">
+      <UniqueIdentifier>{26934d51-43cc-4e91-a714-381f281515ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\memory">
+      <UniqueIdentifier>{07367f22-9ee1-4f3a-b41b-bde8a893e504}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils">
+      <UniqueIdentifier>{cb71f228-94f7-490f-8de6-e3f3796088a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{80d86987-3966-4161-9c73-bb9ff3265eb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\app\client.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\app\inputmanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\app\window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\app\xten_glfw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\API\context.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\API\GLcontext.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\camera\camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\shaders\shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\shaders\shadermanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\lightingtechnique.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\mesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\texture2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\texturemanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maths\pipeline.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maths\primesearch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maths\xrandom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\system\memorymanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\system\memorypool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utils\cpuspeed.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utils\string.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\xTenStd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\maths\primesearch.cpp">
+      <Filter>Source Files\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maths\pipeline.cpp">
+      <Filter>Source Files\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="src\maths\xrandom.cpp">
+      <Filter>Source Files\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="src\app\client.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="src\app\inputmanager.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="src\app\window.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\camera\camera.cpp">
+      <Filter>Source Files\graphics\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\shaders\shadermanager.cpp">
+      <Filter>Source Files\graphics\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\shaders\shader.cpp">
+      <Filter>Source Files\graphics\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\API\atb.cpp">
+      <Filter>Source Files\graphics\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\API\context.cpp">
+      <Filter>Source Files\graphics\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\API\GLcontext.cpp">
+      <Filter>Source Files\graphics\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\API\xten_glfw.cpp">
+      <Filter>Source Files\graphics\API</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\texturemanager.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\texture2d.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\lightingtechnique.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\memorymanager.cpp">
+      <Filter>Source Files\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\memorypool.cpp">
+      <Filter>Source Files\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cpuspeed.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\filestream.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\mesh.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ext\tinyxml\tinyxmlparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ext\tinyxml\tinystr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ext\tinyxml\tinyxml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ext\tinyxml\tinyxmlerror.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\app\client.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\app\inputmanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\app\window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\app\xten_glfw.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\API\context.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\API\GLcontext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\camera\camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\shaders\shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\shaders\shadermanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\lightingtechnique.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\lights.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\texture2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\texturemanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\vertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\pipeline.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\primesearch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\xmat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\xmaths.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\xrandom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\xvec.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\system\memorymanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\system\memorypool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\cpuspeed.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\string.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\xtenkeys.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\xten.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\xTenStd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\pipeline.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\primesearch.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\xmat.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\xmaths.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\xrandom.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\xvec.h">
+      <Filter>Header Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\app\client.h">
+      <Filter>Header Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="src\app\inputmanager.h">
+      <Filter>Header Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="src\app\window.h">
+      <Filter>Header Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\shaders\shader.h">
+      <Filter>Header Files\graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\shaders\shadermanager.h">
+      <Filter>Header Files\graphics\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\camera\camera.h">
+      <Filter>Header Files\graphics\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\API\atb.h">
+      <Filter>Header Files\graphics\API</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\API\context.h">
+      <Filter>Header Files\graphics\API</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\API\GLcontext.h">
+      <Filter>Header Files\graphics\API</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\API\xten_glfw.h">
+      <Filter>Header Files\graphics\API</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\bufferobject.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\lightingtechnique.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\lights.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\vertex.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\texture2d.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\texturemanager.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\memorymanager.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\memorypool.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\cpuspeed.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\filestream.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\mesh.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\streamfactory.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\string.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\utils.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\xtenkeys.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\criticalsection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ext\tinyxml\tinystr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ext\tinyxml\tinyxml.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -175,9 +277,23 @@
     <Text Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\basic.frag" />
-    <None Include="shaders\basic.vert" />
-    <None Include="shaders\light.frag" />
-    <None Include="shaders\light.vert" />
+    <None Include="shaders\light.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\basic.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\basic.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\font.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\font.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\light.frag">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
